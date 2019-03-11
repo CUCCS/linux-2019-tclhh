@@ -198,7 +198,7 @@ get custom.iso
   reboot
   ```
 
-  结果如下( 之前的地址是 192.168.89.3 ):
+  结果如下( 之前的地址是 192.168.89.10 ):
 
   ![ifc](image/ifc.jpg)
 
@@ -280,17 +280,17 @@ get custom.iso
   - 解决方案：重新使用 `putty` 连接，直接将课件上的内容复制粘贴到 `txt.cfg` 的第一行，且尝试了多次。且在 `menu` 成功显示了新增的 `option`。 
 - `preseed` 文件出错。
 
-- - 解决方案：直接使用 `wget` 下载课件上的 `ubuntu-server-autoinstall.seed` ，并且经过多次比对。
+  - 解决方案：直接使用 `wget` 下载课件上的 `ubuntu-server-autoinstall.seed` ，并且经过多次比对。
 
 - `mkisofs` 重新制作镜像出错。
 
-- - 解决方案：直接复制课件上的指令，修改 `image` 和 `build` 的路径。使用指令时没有报错。
+  - 解决方案：直接复制课件上的指令，修改 `image` 和 `build` 的路径。使用指令时没有报错。
 
 - `ubuntu` 使用 `psftp` 向宿主机反传镜像文件时出错。( 同 2 )
 
 - 虚拟机自身出现问题。
 
-- - 解决方案：使用 U 盘将定制的 `custom.iso` 拷贝到机房的电脑上，使用 `virtual box` 挂载镜像，出现相同的问题。
+  - 解决方案：使用 U 盘将定制的 `custom.iso` 拷贝到机房的电脑上，使用 `virtual box` 挂载镜像，出现相同的问题。
 
       
 
@@ -300,7 +300,7 @@ get custom.iso
 
 - 增加 `isolinux/lang` 文件 ( 主要针对 `ubuntu 14.04` )
 
-- - 输入以下指令:
+  - 输入以下指令:
 
     ```bash
     # 向 lang 写入需要的语言
@@ -333,3 +333,7 @@ get custom.iso
 - [Prevent Language selection at ubuntu installation](https://unix.stackexchange.com/questions/196874/prevent-language-selection-at-ubuntu-installation)
 
 - [How do I create a completely unattended install of Ubuntu?](https://askubuntu.com/questions/122505/how-do-i-create-a-completely-unattended-install-of-ubuntu/122506#122506)
+
+- [example-preseed.txt](https://help.ubuntu.com/lts/installation-guide/example-preseed.txt)
+
+- [Appendix B. Automating the installation using preseeding](https://help.ubuntu.com/lts/installation-guide/s390x/apb.html)
