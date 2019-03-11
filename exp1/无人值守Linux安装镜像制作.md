@@ -172,7 +172,7 @@ get custom.iso
 
 ![end](image/end.jpg)
 
-详细的录屏文件 ( 注意本机比机房的机器还要卡，视频大概有 17 min，重点是我手动 `enter`了 `language` 和 其后面的一个选项)：
+详细的录屏文件 ( 注意本机比机房的机器还要卡，视频大概有 17 min，重点是我手动 `enter`了 `language` 和 其后面的一个选项，当我选择完选项之后正常安装)：
 
 ![result](image/result.gif)
 
