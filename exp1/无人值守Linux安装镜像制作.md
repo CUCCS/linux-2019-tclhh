@@ -14,7 +14,9 @@
 ### 实现特性
 
 - 定制一个普通用户名和默认密码
+
 - 定制安装 OpenSSH Server
+
 - 安装过程禁止自动联网更新软件包
 
 
@@ -22,6 +24,7 @@
 ### 实验环境
 
 - OS : ubuntu 18.04 TLS  Server
+
 - Net : host only => 192.168.89.10/24，NAT => 10.0.2.5/24
 
 
@@ -30,13 +33,13 @@
 
 #### 配置网络
 
-直接使用 `vim` 编辑 `\etc\network\interfaces` :
+直接使用 `vim` 编辑 `/etc/network/interfaces` :
 
 ```bash
 # 切换 root 权限
 su -
 
-vi \etc\network\interfaces
+vi /etc/network/interfaces
 
 # 插入以下网卡配置信息
 auto enp0s8
@@ -113,7 +116,7 @@ wget http://sec.cuc.edu.cn/huangwei/course/LinuxSysAdmin/exp/chap0x01/cd-rom/pre
 
 
 # 编辑Ubuntu安装引导界面增加一个新菜单项入口
-vim isolinux/txt.cgi
+vim isolinux/txt.cfg
 
 
 # 添加以下内容到该文件后强制保存退出
