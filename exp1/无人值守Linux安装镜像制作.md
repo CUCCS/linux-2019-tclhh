@@ -191,7 +191,7 @@ get custom.iso
   # 切换 root 权限
   su -
   
-  vi \etc\network\interfaces
+  vi /etc/network/interfaces
   
   # 插入以下网卡配置信息
   auto enp0s8
