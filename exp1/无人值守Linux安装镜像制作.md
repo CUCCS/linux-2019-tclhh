@@ -91,6 +91,9 @@ put your file path
 直接参照课件：
 
 ```
+# -o loop 用来把一个文件当成硬盘分区挂接上系统
+mount -o loop ubuntu-18.04.1-server-amd64.iso loopdir
+
 # 创建一个工作目录用于克隆光盘内容
 mkdir cd
  
