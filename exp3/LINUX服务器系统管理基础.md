@@ -8,21 +8,27 @@
 
 - 命令篇
   - 系统管理
-  [![asciicast](https://asciinema.org/a/yA5Tt28JSocYi4aLGy6gIY5Mv.svg)](https://asciinema.org/a/yA5Tt28JSocYi4aLGy6gIY5Mv) 
+    
+    [![asciicast](https://asciinema.org/a/yA5Tt28JSocYi4aLGy6gIY5Mv.svg)](https://asciinema.org/a/yA5Tt28JSocYi4aLGy6gIY5Mv) 
 
   - Unit
+  
     [![asciicast](https://asciinema.org/a/T6yagMlpMOMnkVXXxKTK7Urgx.svg)](https://asciinema.org/a/T6yagMlpMOMnkVXXxKTK7Urgx)
 
   - 配置文件
+  
     [![asciicast](https://asciinema.org/a/1QDZ3G5xF5xqoPIxG0pNay0I9.svg)](https://asciinema.org/a/1QDZ3G5xF5xqoPIxG0pNay0I9)
 
   - Target
+  
     [![asciicast](https://asciinema.org/a/SrgOKb0JnZGnP8dsubYvnuUrg.svg)](https://asciinema.org/a/SrgOKb0JnZGnP8dsubYvnuUrg)
 
   - 日志管理
+  
     [![asciicast](https://asciinema.org/a/5U44IXyDI406joCW2a3RcJWVy.svg)](https://asciinema.org/a/5U44IXyDI406joCW2a3RcJWVy)
 
 - 实战篇
+
   [![asciicast](https://asciinema.org/a/6KwNQ0ZL0VfcMlT5fXfMPJ2XT.svg =200)](https://asciinema.org/a/6KwNQ0ZL0VfcMlT5fXfMPJ2XT)
 
 
