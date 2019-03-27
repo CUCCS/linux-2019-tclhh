@@ -29,7 +29,7 @@
 
 - 实战篇
 
-  [![asciicast](https://asciinema.org/a/6KwNQ0ZL0VfcMlT5fXfMPJ2XT.svg =200)](https://asciinema.org/a/6KwNQ0ZL0VfcMlT5fXfMPJ2XT)
+  [![asciicast](https://asciinema.org/a/6KwNQ0ZL0VfcMlT5fXfMPJ2XT.svg)](https://asciinema.org/a/6KwNQ0ZL0VfcMlT5fXfMPJ2XT)
 
 
 ### 用 tmux 重做上一章的ping前后台执行方式实验
@@ -52,7 +52,7 @@ pstree -A
 
 Before:
 
-![before](G:\Linux\exp3\image\before.jpg)
+![before](image/before.jpg)
 
 After: 
 
@@ -100,9 +100,7 @@ id -u
    -u, --user     print only the effective user ID
   ```
 
-- 什么是**effective group ID**？
-
-- 什么是**effective user ID**？
+- 什么是**effective group ID**？什么是**effective user ID**？
 
   - `effective group ID` 和 `effective user ID` 是相对于 `real user ID` 和 `real group ID` 定义的。`rXid` 表示**进程的真实所有者**，`eXid`表示有效使用的者。
 
