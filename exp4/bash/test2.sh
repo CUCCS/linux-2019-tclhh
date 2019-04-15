@@ -3,7 +3,6 @@
 filename=$1
 shift 1
 
-
 function usage(){
 cat << EOF
 Version: 0.0.1 (2019 Apr 15)
