@@ -1,7 +1,7 @@
 #! /bin/env bash
 
 filename=$1
-shift 1
+shift
 linenum=$(wc -l < "$filename")
 
 function usage(){
