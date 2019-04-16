@@ -1,132 +1,111 @@
-#! /bin/env bash
+#!/bin/env bash
+
+ARGS=$(getopt -o i:q:r:w:p:s:fh --long input:,quality:,resolution:,watermark:,prefix:,suffix:,format,help -n "test.sh" -- "$@")
 
 
-function usage
+function usage(){
+cat << EOF
+Version: 0.0.1 (2019 Apr 16)
+
+Usage: bash $1 [filename] ... [OPTION] ...
+
+    -i  --input <filename|path>         Input image for processing
+    -q, --quality <percent>             Image quality compression
+    -r, --resize <percent>          	Image resolution compression
+    -w, --watermark <text>              Add text watermark
+    -p, --prefix <prefix>               Add prefix
+    -s, --suffix <suffix>               Add suffix
+    -f, --format              	   	Transform image format
+    -h, --help                          get the help info
+
+Example: 
+     bash $1 -i 1.svg --suffix "suf" -f
+     bash $1 -i ./ -p "pre" -w "textfortest" --quality 50 -r 500x400
+
+EOF
+exit 0
+}
+
+
+function check_input()
 {
-    echo "Usage:"
-    echo "  -i  --input <filename>              Input image for processing"
-    echo "  -o  --output <filename>             Output image for saving"
-    echo "  -q, --quality <percent>             Image quality compression"
-    echo "  -r, --resolution <percent>          Image resolution compression"
-    echo "  -w, --watermark <text>              Add text watermark"
-    echo "  -p, --prefix <prefix>               Add prefix"
-    echo "  -s, --suffix <suffix>               Add suffix"
-    echo "  -t, --transform                     Transform image format"
-    echo "  -h, --help                          get the help info"
+   if [[ ! -d $1 && ! -f $1 ]]; then
+     echo "Path or file do not exsit!"
+     exit 1
+   fi   
 }
 
 
-
-function proc_opts {
-while getopts ":i:q:r:w:t:hs:p:" opt
-  do 
-	case "${opt}" in
-   	  "w") if [[ ${OPTARGS} ]] ;then
-		  watermark=${OPTARG} 
-	       else 
-		  echo "[-] ERROR: The watermark cannot be empty!"
-		  echo "[+] You cau use -h to get help!" 
-		  return 1
-	       fi ;;
-	
-   	  "q")
-		if [[ ${OPTARGS} ]] ;then 
-		   quality=${OPTARGS}		
-		else
-		   echo "[-] ERROR: The compression quality cannot be empty!"
-		   echo "[+] You cau use -h to get help!"
-		   return 2
-		fi ;;
-	  "r") 
-		if [[ ${OPTARGS} ]] ;then
-		   resolution=${OPTARGS}
-		else
-		   echo "[-] ERROR: The compression resolution cannot be empty!"
-		   echo "[+] You cau use -h to get help!"
-		   return 3
-		fi ;;
-	   "i") 
-		if [[ ${OPTARGS}&& -f ${OPTARGS} ]] ;then
-		   input=${OPTARGS}
-		else 
-		   echo "[-] ERROR: The input file error!"
-	    	   echo "[+] You cau use -h to get help!"
-		   exit 4
-		fi ;;
-	   "o") 
-		if [[ ${OPTARGS} ]] ;then
-		   output=${OPTARGS}
-		else 
-		   echo "[-] ERROR: The output file cannot be empty!"
-	    	   echo "[+] You cau use -h to get help!"
-		   exit 5
-		fi ;;
-	   "s") 
-		if [[ ${OPTARGS} ]] ;then
-		   suffix=${OPTARGS}
-		else
-		   echo "[-] ERROR: The suffix cannot be empty!"
-	    	   echo "[+] You cau use -h to get help!"
-		   exit 6
-		fi ;;
-	   "p") 
-		if [[ ${OPTARGS} ]] ;then
-		   prefix=${OPTARGS}
-		else
-		   echo "[-] ERROR: The prefix cannot be empty!"
-	    	   echo "[+] You cau use -h to get help!"
-		   exit 7
-		fi ;;
-	    "t")
-		if [[ ${OPTARGS} ]] ;then
-		   transfer=${OPTARGS}
-		else
-		   echo "[-] ERROR: The transfer format cannot be empty!"
-	    	   echo "[+] You cau use -h to get help!"
-		   exit 8
-		fi ;;
-	    "h")	
-    		 usage ;;
-	    "?")
-		 echo "[-] ERROR: Unknow option $OPTARG"
-		 exit 9 ;;
-	    ":")
-		 echo "[-] ERROR: No argument value for option $OPTARG"
-		 exit 10 ;;
-   	    *) #Should not occur
-		 echo "[-] ERROR: Unknown error while processing options"
-		 ;;
-	esac
-  done
-}
-
-
-function quality
+function quality()
 {
-   $(convert $1 -quality $2 $3)
-   echo "[+] Quality compresses successfully!"
+   [[ "$(identify -format "%m" "$1")" == "JPEG" ]] && command=${command}" -quality $2"
 }
 
 
-function resolution
+function resize()
 {
-   $(convert $1 -resize $2 $3)
-   echo "[+] Resolution compresses successfully!"
+   [[ "PNGSVGJPEG" =~ $(identify -format "%m" "$1") ]] && command=${command}" -resize $3"
 }
 
 
-function textwatermark
+function watermark()
 {
-   $(convert $1 -draw )
+   command=${command}" -gravity southeast -fill black -pointsize 16 -draw 'text 20,10 '"$2
 }
 
 
-function format
+function format()
 {
-   $(convert $1 $2)
-   echo "[+] Format transformes successfully!"
+   [[ "PNGSVG" =~ $(identify -format "%m" "$1") ]] && f=${1%.*}".jpg" && command=${command}" after_"$f
 }
 
 
-proc_opts $@
+function prefix()
+{
+   mv "after_$1" "$2$1"
+   echo "[+] Add prefix $2 successfully!"  
+}
 
+
+function suffix()
+{
+   mv "after_$1" "$1$2"
+   echo "[+] Add suffix $2 successfully!"
+}
+
+
+eval set -- "$ARGS"
+while true; do
+   case "$1" in 
+	-i|--input)	input=$2;	shift 2 ;;
+	-q|--quality)   quality=$2;     shift 2 ;;
+	-r|--resize) 	resize=$2;      shift 2 ;;
+	-w|--watermark) watermark=$2;	shift 2 ;;
+	-p|--prefix) 	prefix=$2;	shift 2 ;;
+	-s|--suffix)  	suffix=$2;	shift 2 ;;
+	-f|--format) 	format=true;    shift 1 ;;
+	-h|--help)	usage "$0";  	shift 1 ;;
+	--)		break;
+   esac
+done
+
+check_input "$input"
+
+files=$(ls "$input")
+
+for f in $files; do
+   [[ ! "jpegjpgsvgpng" =~ ${f#*.} ]] && continue
+   command="convert"
+   if [[ "$quality" ]];   then quality   "$f" 	"$quality";   fi
+   if [[ "$resize" ]];    then resize    "$f"   "$resize";    fi
+   if [[ "$watermark" ]]; then watermark "$f"	"$watermark"; fi
+   command=${command}" $f"
+   if [[ "$format" ]]; then 
+	format "$f"
+   else
+	command=${command}" after_"${f}
+   fi
+   eval "$command"
+   if [[ "$prefix" ]];	  then prefix	 "$f"  "$prefix";    fi
+   if [[ "$suffix" ]];	  then suffix	 "$f"  "$suffix";    fi
+done
