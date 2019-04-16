@@ -45,9 +45,11 @@ script:
   
 
   # 打印任务三中的帮助信息
-  - bash bash/test3.sh -h
+  - bash bash/test3.sh web_log.tsv -h
   # 验证打印所有的统计信息
   - bash bash/test3.sh web_log.tsv -Aurcrsg
+  # 验证给定 url 统计信息
+  - bash test3.sh web_log.sh -g "/ksc.html"
  
  
 after_script:
