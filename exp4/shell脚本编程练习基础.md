@@ -67,7 +67,17 @@
     因为使用了 `getopts` ，测试语句比较简单：
 
     ```
-    bash test3.sh
+    # 打印帮助信息
+    bash test3.sh web_log.tsv -h
+    
+    # 输出全部的统计信息 
+    bash test3.sh web_log.tsv -A
+    
+    # 给定 url 打印访问信息
+    bash test3.sh web_log.sh -g "/ksc.html"
+    
+    # 输出全部的统计信息
+    bash test3.sh web_log.tsv -uicrsg
     ```
 
     
@@ -142,3 +152,23 @@
   - 使用 `getopt` 改进了 (2) 不支持长参数的问题。
   - 在获取文件后缀时，只是简单地使用 `${f#*.}`  截取后缀。(也可以使用 `identify -format "%m"` ，如果遇到非图片类型的文件，会输出 `stderror`，  通过 `2>&1` 重定向到标准输出，之后根据标准输出判断文件类型，个人感觉这种方法好一些。）
 
+- 测试语句
+```
+  # 打印任务一帮助信息
+  bash bash/test1.sh --help
+  
+  # 将 1.svg 转为 .jpg 并增加后缀 "suf" 
+  bash test1.sh -i test/3.svg --suffix "suf" -f
+  
+  # 将 test/ 目录下的 所有 SVG|PNG|JPG 文件添加水印 "textfortest",
+  # 压缩质量 50 % , 比例变为 500 x 400 之后增加前缀 "pre" 
+  bash bash/test1.sh -i test/ -p "pre" -w "textfortest" --quality 50 -r 500x400
+```
+
+### 参阅
+  - [实验报告](https://github.com/CUCCS/linux-2019-jckling/tree/0x04)
+  
+  - [getopt](https://www.mkssoftware.com/docs/man1/getopt.1.asp)
+  
+  - [Shell Scripting Tutorial - Tip Getopts](https://www.shellscript.sh/tips/getopts/)
+  
