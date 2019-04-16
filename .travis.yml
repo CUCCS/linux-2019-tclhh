@@ -23,12 +23,14 @@ script:
   - bash test.sh
   - cp web_log.tsv exp4/web_log.tsv
   - cd exp4/
+  # 转化得到实验素材
+  - convert test/1.jpg test/3.svg
   
   
   # 打印任务一帮助信息
   - bash bash/test1.sh --help
   # 将 1.svg 转为 .jpg 并增加后缀 "suf" 
-  - bash test1.sh -i test/1.svg --suffix "suf" -f
+  - bash test1.sh -i test/3.svg --suffix "suf" -f
   # 将 test/ 目录下的 所有 SVG|PNG|JPG 文件添加水印 "textfortest",
   # 压缩质量 50 % , 比例变为 500 x 400 之后增加前缀 "pre" 
   - bash bash/test1.sh -i test/ -p "pre" -w "textfortest" --quality 50 -r 500x400
