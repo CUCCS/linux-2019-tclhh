@@ -89,22 +89,25 @@ while true; do
    esac
 done
 
-check_input "$input"
 
+check_input "$input"
 files=$(ls "$input")
 
 for f in $files; do
    [[ ! "jpegjpgsvgpng" =~ ${f#*.} ]] && continue
    command="convert"
+   
    if [[ "$quality" ]];   then quality   "$f" 	"$quality";   fi
    if [[ "$resize" ]];    then resize    "$f"   "$resize";    fi
    if [[ "$watermark" ]]; then watermark "$f"	"$watermark"; fi
+   
    command=${command}" $f"
    if [[ "$format" ]]; then 
 	format "$f"
    else
 	command=${command}" after_"${f}
    fi
+   
    eval "$command"
    if [[ "$prefix" ]];	  then prefix	 "$f"  "$prefix";    fi
    if [[ "$suffix" ]];	  then suffix	 "$f"  "$suffix";    fi
