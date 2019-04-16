@@ -62,11 +62,11 @@
 
   
 
-  - 测试语句：
+ - 测试语句：
 
     因为使用了 `getopts` ，测试语句比较简单：
 
-    ```
+    ```bash
     # 打印帮助信息
     bash test3.sh web_log.tsv -h
     
@@ -124,7 +124,7 @@
 
     ![test2](image/test2.jpg)
 
-  - 测试语句：
+ - 测试语句：
 
     ```bash
     # 获得帮助信息
