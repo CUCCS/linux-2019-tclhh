@@ -50,7 +50,7 @@ script:
   # 验证打印所有的统计信息
   - bash bash/test3.sh web_log.tsv -Aurcrsg
   # 验证给定 url 统计信息
-  - bash test3.sh web_log.tsv -g "/ksc.html"
+  - bash bash/test3.sh web_log.tsv -g "/ksc.html"
  
  
 after_script:
