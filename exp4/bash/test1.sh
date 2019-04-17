@@ -56,7 +56,7 @@ function resize()
 
 function watermark()
 {
-   command=${command}" -gravity southeast -fill black -pointsize 16 -draw \"text 20,10 '$2'\""
+   command=${command}" -gravity southeast -fill black -pointsize 16 -font \"AvantGarde\" -draw \"text 20,10 '$2'\""
 }
 
 
