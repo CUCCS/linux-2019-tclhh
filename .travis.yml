@@ -36,6 +36,7 @@ script:
   # 将 test/ 目录下的 所有 SVG|PNG|JPG 文件添加水印 "textfortest",
   # 压缩质量 50 % , 比例变为 500 x 400
   - bash bash/test1.sh -i test/ -w "textfortest" --quality 50 -r 500x400
+  - ls test/
 
 
   # 打印任务二的帮助信息
