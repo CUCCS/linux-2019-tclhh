@@ -31,10 +31,10 @@ function check_input()
 {
    if [[ -d $1 ]]; then
       p=$(pwd)
-      "cd $1"
+      cd "$1" || exit
    elif [[ -f $1 ]]; then
       p=$(pwd)
-      "cd $(dirname "$1")"
+      cd "$(dirname "$1")" || exit
    else
      echo "Path or file do not exsit!"
      exit 1
