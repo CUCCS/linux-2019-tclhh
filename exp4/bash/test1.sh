@@ -29,11 +29,16 @@ exit 0
 
 function check_input()
 {
-   if [[ ! -d $1 && ! -f $1 ]]; then
+   if [[ -d $1 ]]; then
+      p=$(pwd) && cd $1
+   elif [[ -f $1 ]]; then
+      p=$(pwd) && cd $(dirname $1)
+   else
      echo "Path or file do not exsit!"
      exit 1
-   fi   
+   fi
 }
+
 
 
 function quality()
@@ -91,7 +96,8 @@ done
 
 
 check_input "$input"
-files=$(ls "$input")
+files=$(ls "$p/$input")
+
 
 for f in $files; do
    [[ ! "jpegjpgsvgpng" =~ ${f#*.} ]] && continue
