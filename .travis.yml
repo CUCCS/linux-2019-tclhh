@@ -27,6 +27,8 @@ script:
   - convert test/1.jpg test/3.svg
   # 查看实验材料
   - ls test/
+  # 列出系统可用字体
+  - convert -list font
   
   # 打印任务一帮助信息
   - bash bash/test1.sh --help
