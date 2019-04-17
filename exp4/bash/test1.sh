@@ -49,13 +49,13 @@ function quality()
 
 function resize()
 {
-   [[ "PNGSVGJPEG" =~ $(identify -format "%m" "$1") ]] && command=${command}" -resize $3"
+   [[ "PNGSVGJPEG" =~ $(identify -format "%m" "$1") ]] && command=${command}" -resize $2"
 }
 
 
 function watermark()
 {
-   command=${command}" -gravity southeast -fill black -pointsize 16 -draw 'text 20,10 '"$2
+   command=${command}" -gravity southeast -fill black -pointsize 16 -draw \"text 20,10 '$2'\""
 }
 
 
