@@ -100,7 +100,7 @@ files=$(ls "$p/$input")
 
 
 for f in $files; do
-   [[ ! "jpegjpgsvgpng" =~ ${f#*.} ]] && continue
+   f=${f##*/} && [[ ! "jpegjpgsvgpng" =~ ${f#*.} ]] && continue
    command="convert"
    
    if [[ "$quality" ]];   then quality   "$f" 	"$quality";   fi
