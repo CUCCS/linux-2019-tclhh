@@ -90,17 +90,17 @@ function position_stats()
 
 function max_len_name()
 {
-    max=$(awk -F '\t' 'BEGIN {max = 0} t = $9 {gsub(" ","",t); if (length(t) > max) max = length(t)} END{print max}' "$filename")
+    max=$(awk -F '\t' 'BEGIN {max = 0} t = $9 {gsub(/[ -]/,"",t); if (length(t) > max) max = length(t)} END{print max}' "$filename")
     echo -e "\n=========== Max Name Length ==============="
-    awk -F '\t' 'BEGIN{max = '"$max"'} t = $9 {gsub(" ","",t); if(length(t) == max) print $9 "\t\t" max}' "$filename"
+    awk -F '\t' 'BEGIN{max = '"$max"'}t = $9{gsub(/[ -]/,"",t); if(length(t) == max) print $9 "\t\t" max}' "$filename"
 }
 
 
 function min_len_name()
 {
-    min=$(awk -F '\t' 'BEGIN {min = 10000} t = $9 {gsub(" ","",t); if(length(t) < min) min = length(t)} END{print min}' "$filename")
+    min=$(awk -F '\t' 'BEGIN {min = 10000} t = $9 {gsub(/[ -]/,"",t); if(length(t) < min) min = length(t)} END{print min}' "$filename")
     echo -e "\n=========== Min Name Length ==============="
-    awk -F '\t' 'BEGIN{min = '"$min"'} t = $9 {gsub(" ","",t); if(length(t) == min) print $9 "\t\t\t\t" min}' "$filename"
+    awk -F '\t' 'BEGIN{min = '"$min"'} t = $9 {gsub(/[ -]/,"",t); if(length(t) == min) print $9 "\t\t\t\t" min}' "$filename"
 }
 
 
