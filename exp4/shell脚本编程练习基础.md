@@ -110,6 +110,8 @@
     ![j](image/j.jpg)
 
     发现统计数据中的名字只是简写，这个人的全名还是很长的。数据并没有问题。
+    
+    如果不去除特殊字符(`0x20` 和 `-` )，最长的名字有 26 个字符，最后处理还是去除了特殊字符。
 
   - 在 (1) 中 `-h`  参数的位置问题，还是使用 `getopts`，同时采用了一种和以上两个样例都不相同的改进方法：
 
@@ -168,7 +170,11 @@
 ### 参阅
   - [实验报告](https://github.com/CUCCS/linux-2019-jckling/tree/0x04)
   
+  - [Shell 脚本编程基础](https://github.com/CUCCS/linux-2019-Jasmine2020/tree/linux4/Lab4_Shell%E7%BC%96%E7%A8%8B)
+  
   - [getopt](https://www.mkssoftware.com/docs/man1/getopt.1.asp)
   
   - [Shell Scripting Tutorial - Tip Getopts](https://www.shellscript.sh/tips/getopts/)
+  
+  - [ShellCheck](https://www.shellcheck.net/)
   
