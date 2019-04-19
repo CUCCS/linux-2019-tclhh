@@ -57,7 +57,7 @@ function top_src_host_ip()
 function given_url_top_src_host()
 {
    echo -e "\n=============== Given URL Top 100 Src Host ================"
-   awk -F '\t' 'NR != 1 {if($5=='"$1"') a[$1]++} END {for(i in a) {printf("%-40s\t%d\n",i,a[i])}}' "$filename" | sort -nr -k2 | head -n 10 
+   awk -F '\t' 'NR != 1 {if($5=="'"$1"'") a[$1]++} END {for(i in a) {printf("%-40s\t%d\n",i,a[i])}}' "$filename" | sort -nr -k2 | head -n 10 
 }
 
 
@@ -67,7 +67,7 @@ function status_code_top_url()
     echo -e "\n======================= Status Code 4xx Top URL ========================="
     for res in $a; 
     do
-	awk -F '\t' 'BEGIN {res='"$res"'} NR != 1 {if(res==$6) a[$5]++} END {for(i in a) {printf("%d\t%-60s\t\t%d\n",res,i,a[i])}}' "$filename" | sort -nr -k3 | head -n 10 
+	awk -F '\t' 'BEGIN {res='"$res"'} NR != 1 {if(res==$6) a[$5]++} END {for(i in a) {printf("%d\t%-60s\t\t%d\n",res,i,a[i])}}' "$filename" | sort -nr -k3 | head -n 100 
     done
 }
 
