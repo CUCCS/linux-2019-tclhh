@@ -88,19 +88,18 @@ function position_stats()
 }
 
 
-function max_len_name()
-{
-    max=$(awk -F '\t' 'BEGIN {max = 0} t = $9 {gsub(/[ -]/,"",t); if (length(t) > max) max = length(t)} END{print max}' "$filename")
-    echo -e "\n=========== Max Name Length ==============="
-    awk -F '\t' 'BEGIN{max = '"$max"'}t = $9{gsub(/[ -]/,"",t); if(length(t) == max) print $9 "\t\t" max}' "$filename"
+function position_stats()
+{     
+     echo -e "\n=========== Position Age ==============="
+     awk -F '\t' 'NR != 1 { if($5 == "Défenseur") print "Defender";else print $5}' "$filename" | sort -f | uniq -c | awk '{printf("%-10s\t%d\t%.2f%%\n",$2,$1,100*$1/'"$linenum"')}'
 }
 
 
-function min_len_name()
+function max_len_name()
 {
-    min=$(awk -F '\t' 'BEGIN {min = 10000} t = $9 {gsub(/[ -]/,"",t); if(length(t) < min) min = length(t)} END{print min}' "$filename")
-    echo -e "\n=========== Min Name Length ==============="
-    awk -F '\t' 'BEGIN{min = '"$min"'} t = $9 {gsub(/[ -]/,"",t); if(length(t) == min) print $9 "\t\t\t\t" min}' "$filename"
+    max=$(awk -F '\t' 'BEGIN {max = 0} {if (length($9) > max) max = length($9)} END{print max}' "$filename")
+    echo -e "\n=========== Max Name Length ==============="
+    awk -F '\t' 'BEGIN{max = '"$max"'}{if(length($9) == max) print $9 "\t\t" max}' "$filename"
 }
 
 
