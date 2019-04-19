@@ -22,7 +22,7 @@ Arguments:
 
 Example: 
     bash $1 worldcupplayerinfo.tsv -A 	        show all statistics information
-    bash $1 worldcupplayerinfo.tsv -pos           show position status + show the oldest + show the shortest 
+    bash $1 worldcupplayerinfo.tsv -pos         show position status + show the oldest + show the shortest 
 
 EOF
 }
@@ -37,7 +37,7 @@ function check_file()
 	echo "File does not exist! or Unknown input!"
 	exit
    else
-	linenum=$( wc -l < "$filename" )
+	linenum=$( awk 'NR != 1{ print $0 }' "$filename" | wc -l )
    fi
 }
 
