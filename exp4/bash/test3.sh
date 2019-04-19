@@ -2,7 +2,7 @@
 
 filename=$1
 shift
-linenum=$(wc -l < "$filename")
+linenum=$( awk 'NR != 1{ print $0 }' "$filename" | wc -l )
 
 function usage(){
 cat << EOF
@@ -29,14 +29,14 @@ EOF
 function top_src_host()
 {
    echo -e "\n================= Top 100 Src Host ================"
-   awk -F '\t' 'NR != 1 {a[$1]++} END {for(i in a) { printf("%-40s\t20%d\n",i,a[i]) }}' "$filename" | sort -nr -k2 | head -n 100
+   awk -F '\t' 'NR != 1 {a[$1]++} END {for(i in a) { printf("%-40s\t%20d\n",i,a[i]) }}' "$filename" | sort -nr -k2 | head -n 100
 }
 
 
 function top_url()
 {
    echo -e "\n======================= Top 100 Url ========================="
-   awk -F '\t' 'NR != 1 {a[$5]++} END {for(i in a) { printf("%-50s\t20%d\n",i,a[i]) }}' "$filename" | sort -nr -k2 | head -n 100
+   awk -F '\t' 'NR != 1 {a[$5]++} END {for(i in a) { printf("%-50s\t%20d\n",i,a[i]) }}' "$filename" | sort -nr -k2 | head -n 100
 }
 
 
