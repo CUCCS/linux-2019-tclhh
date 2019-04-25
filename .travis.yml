@@ -16,7 +16,7 @@ before_install:
     # 下载  
     - wget "https://sec.cuc.edu.cn/huangwei/course/LinuxSysAdmin/exp/chap0x04/web_log.tsv.7z"
     - sudo apt install p7zip-full
-    - 7z x web_log.tsv.7z -o exp4/
+    - 7z x web_log.tsv.7z -oexp4/
 
     
 script:
