@@ -57,9 +57,9 @@ script:
  
  
 after_script:
-  - /usr/bin/shellcheck test1.sh
-  - /usr/bin/shellcheck test2.sh
-  - /usr/bin/shellcheck test3.sh
+  - /usr/bin/shellcheck bash/test1.sh
+  - /usr/bin/shellcheck bash/test2.sh
+  - /usr/bin/shellcheck bash/test3.sh
   
 
 after_failure:
