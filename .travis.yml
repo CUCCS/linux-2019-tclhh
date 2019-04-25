@@ -16,12 +16,11 @@ before_install:
     # 下载  
     - wget "https://sec.cuc.edu.cn/huangwei/course/LinuxSysAdmin/exp/chap0x04/web_log.tsv.7z"
     - sudo apt install p7zip-full
-    - 7z x web_log.tsv.7z
+    - 7z x web_log.tsv.7z -o exp4/
 
     
 script:
   - bash test.sh
-  - cp web_log.tsv exp4/web_log.tsv
   - cd exp4/
   # 转化得到实验素材
   - convert test/1.jpg test/3.svg
@@ -58,7 +57,10 @@ script:
  
  
 after_script:
-  - /usr/bin/shellcheck test.sh
+  - /usr/bin/shellcheck test1.sh
+  - /usr/bin/shellcheck test2.sh
+  - /usr/bin/shellcheck test3.sh
+  
 
 after_failure:
   - id
