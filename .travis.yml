@@ -32,7 +32,7 @@ script:
   # 打印任务一帮助信息
   - bash bash/test1.sh --help
   # 将 1.svg 转为 .jpg 并增加后缀 "suf" 
-  - bash bash/test1.sh -i test/3.svg --suffix "suf" -f
+  - bash bash/test1.sh -i test/3.svg --suffix ".suf" -f
   - ls test/
   # 将 test/ 目录下的 所有 SVG|PNG|JPG 文件添加水印 "textfortest",
   # 压缩质量 50 % , 比例变为 500 x 400
