@@ -8,13 +8,59 @@ before_install:
     - wget "https://storage.googleapis.com/shellcheck/shellcheck-${scversion}.linux.x86_64.tar.xz"
     - tar --xz -xvf shellcheck-"${scversion}".linux.x86_64.tar.xz
     - sudo cp shellcheck-"${scversion}"/shellcheck /usr/bin/
-    - shellcheck --version
+    - /usr/bin/shellcheck --version
 
+    #安装 imagemagick
+    - sudo apt-get install imagemagick 
+
+    # 下载  
+    - wget "https://sec.cuc.edu.cn/huangwei/course/LinuxSysAdmin/exp/chap0x04/web_log.tsv.7z"
+    - sudo apt install p7zip-full
+    - 7z x web_log.tsv.7z -oexp4/
+
+    
 script:
   - bash test.sh
+  - cd exp4/
+  # 转化得到实验素材
+  - convert test/1.jpg test/3.svg
+  # 查看实验材料
+  - ls test/
+  # 列出系统可用字体
+  - convert -list font
+  
+  # 打印任务一帮助信息
+  - bash bash/test1.sh --help
+  # 将 1.svg 转为 .jpg 并增加后缀 "suf" 
+  - bash bash/test1.sh -i test/3.svg --suffix ".suf" -f
+  - ls test/
+  # 将 test/ 目录下的 所有 SVG|PNG|JPG 文件添加水印 "textfortest",
+  # 压缩质量 50 % , 比例变为 500 x 400
+  - bash bash/test1.sh -i test/ -w "textfortest" --quality 50 -r 500x400
+  - ls test/
 
+
+  # 打印任务二的帮助信息
+  - bash bash/test2.sh -h
+  # 验证打印所有的统计信息(1) 
+  - bash bash/test2.sh test/worldcupplayerinfo.tsv -A
+  # 验证打印所有的统计信息(2)
+  - bash bash/test2.sh test/worldcupplayerinfo.tsv -aoypls           
+  
+
+  # 打印任务三中的帮助信息
+  - bash bash/test3.sh web_log.tsv -h
+  # 验证打印所有的统计信息
+  - bash bash/test3.sh web_log.tsv -Aurcrsg
+  # 验证给定 url 统计信息
+  - bash bash/test3.sh web_log.tsv -g "/ksc.html"
+ 
+ 
 after_script:
-  - shellcheck test.sh
+  - /usr/bin/shellcheck bash/test1.sh
+  - /usr/bin/shellcheck bash/test2.sh
+  - /usr/bin/shellcheck bash/test3.sh
+  
 
 after_failure:
   - id
@@ -24,4 +70,4 @@ after_failure:
 
 notifications:
   email:
-    on_success: never
+on_success: never
