@@ -1,0 +1,22 @@
+server {
+    listen 127.0.0.1:8888 ssl;
+    server_name wp.sec.cuc.edu.cn;
+
+    root /var/www/html/wordpress;
+    index index.php index.html index.htm;
+
+    include /etc/nginx/snippets/self-signed.conf;
+
+    location / {
+            try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+            include snippets/fastcgi-php.conf;
+            fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+    }
+
+    location ~ /\.ht{
+            deny all;
+    }
+}
