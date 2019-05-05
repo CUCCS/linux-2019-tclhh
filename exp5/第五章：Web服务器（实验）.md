@@ -420,24 +420,37 @@
 
 最后的配置文件：
 
-- [/opt/verynginx/openresty/nginx/conf/nginx.conf](config\ngixn.conf)
+- [/opt/verynginx/openresty/nginx/conf/nginx.conf](config/ngixn.conf)
 
--  [/etc/nginx/sites-enabled/dvwa.sec.cuc.edu.cn](config\dvwa.sec.cuc.edu.cn) 
--  [/etc/nginx/sites-enabled/wp.sec.cuc.edu.cn](config\wp.sec.cuc.edu.cn) 
+-  [/etc/nginx/sites-enabled/dvwa.sec.cuc.edu.cn](config/dvwa.sec.cuc.edu.cn) 
+-  [/etc/nginx/sites-enabled/wp.sec.cuc.edu.cn](config/wp.sec.cuc.edu.cn) 
 
 ## 参阅
 
 - [VeryNginx](https://github.com/alexazhou/VeryNginx/blob/master/readme_zh.md)
+
 - [VeryNginx Wiki](https://github.com/alexazhou/VeryNginx/wiki/%E7%9B%AE%E5%BD%95)
+
 - [Example nginx configuration](<https://nginx.org/en/docs/example.html>)
+
 - [How nginx processes a request](<https://nginx.org/en/docs/http/request_processing.html>)
+
 - [How To Install Nginx on Ubuntu 18.04](<https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04#step-1-%E2%80%93-installing-nginx>)
+
 - [How To Install WordPress with LEMP on Ubuntu 18.04](<https://www.digitalocean.com/community/tutorials/how-to-install-wordpress-with-lemp-on-ubuntu-18-04>)
+
 - [“configuration file /etc/nginx/nginx.conf test failed”: How do I know why this happened?](<https://stackoverflow.com/questions/22306006/configuration-file-etc-nginx-nginx-conf-test-failed-how-do-i-know-why-this-h>)
+
 - [How to Install and Configure DVWA Lab on Ubuntu 18.04 server](<https://kifarunix.com/how-to-setup-damn-vulnerable-web-app-lab-on-ubuntu-18-04-server/>)
+
 - [Your password does not satisfy the current policy requirements](<https://stackoverflow.com/questions/43094726/your-password-does-not-satisfy-the-current-policy-requirements>)
+
 - [Configuring HTTPS servers](<https://nginx.org/en/docs/http/configuring_https_servers.html>)
+
 - [WordPress < 4.7.1 - Username Enumeration](<https://www.exploit-db.com/exploits/41497>)
+
 - [WordPress REST API 内容注入漏洞](<https://www.seebug.org/vuldb/ssvid-92637>)
+
 - [实验5 web 服务器的搭建](<https://github.com/CUCCS/linux-2019-jackcily/blob/job5/job5/%E5%AE%9E%E9%AA%8C5.md>)
+
 - [高级Web服务器配置](<https://github.com/CUCCS/linux-2019-jckling/blob/0x05/0x05/%E5%AE%9E%E9%AA%8C%E6%8A%A5%E5%91%8A.md>)
